@@ -20,7 +20,7 @@ void txttostring(){
 	textfile.close();
 	/*string FileMeasure = "Hello FILE!"          //Trosdecodi k xuta pero no es meu
 		int TempNumOne = FileMeasure.size();      //S ha d adaptar per una string array
-	char Filename[100];
+	char Filename[100];                           //Trulàs Ombrívol
 	for (int a = 0; a <= TempNumOne; a++)
 	{
 		Filename[a] = FileMeasure[a];
