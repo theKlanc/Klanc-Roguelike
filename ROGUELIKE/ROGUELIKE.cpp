@@ -32,15 +32,17 @@ int main()
 			}
 			textfile.close();
 		   
-			int x = 0;
-			int y = 0;
-			int TempNumOne = buffer[y].size();       //AquestTroçDeCodiNoEsMeu    
-			char Filename[255][255];                 //
-			for (int x = 0; x <= TempNumOne; x++)    //
-			{                                        //
-			Filename[x][y] = buffer[y][x];              //APartirDAquiElCodiJaEsMeu
+			//int bufferheight = sizeof(buffer);
+			int bufferheight = 1;
+			int bufferlength = buffer[0].size();         //AquestTroçDeCodiNoEsMeu    
+			char Filename[255][255];                     //
+			for (int y = 0; y <= bufferheight; y++)      //EhtoEhMio
+			{
+				for (int x = 0; x <= bufferlength; x++)  //
+				{                                        //
+					Filename[x][y] = buffer[y][x];       //APartirDAquiElCodiJaEsMeu
+				}
 			}
-			cout << Filename[0][1]<<endl;
 		}
 		if (option == 2){
 			int i;
