@@ -45,7 +45,21 @@ int main()
 			txttostring();
 		}
 		if (option == 2){
-			
+			int i = 5;
+			ofstream textfile;
+			textfile.open("map.txt");
+			if (textfile.fail()){
+				cerr << "error al obrir";
+			}
+			while (i != 0){
+				string temp;
+				cin >> temp;
+				textfile << temp;
+				textfile << endl;
+				i--;
+			}
+			textfile.close();
+
 		}
 		if (option == 3){
 			//generatemapOPCIONS;
