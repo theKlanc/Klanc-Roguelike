@@ -33,8 +33,9 @@ int main()
 			textfile.close();
 		   
 			//int bufferheight = sizeof(buffer);
-			int bufferheight = 1;
+			int bufferheight = sizeof buffer[0];
 			int bufferlength = buffer[0].size();         //AquestTroçDeCodiNoEsMeu    
+			cout << bufferheight;
 			char Filename[255][255];                     //
 			for (int y = 0; y <= bufferheight; y++)      //EhtoEhMio
 			{
