@@ -18,39 +18,42 @@ int main()
 		cout << "Escull una opcio" << endl << "1) Programa1" << endl << "2) Crear mapa" << endl << "3) Opcions" << endl << "4) Exit" << endl;
 		cin >> option;
 		if (option == 1){
-			int i = 0;
+			int i = 0, bufferheight,bufferlength;
 			string buffer[255];
 			ifstream textfile;
 			textfile.open("map.txt");
 			if (textfile.fail()){
-				cout << "error al obrir";
+				cerr << "error al obrir";
 			}
+			textfile >> bufferheight;
+			textfile >> bufferlength;
+			cout << bufferheight << endl << bufferlength << endl;
+			bufferheight = bufferheight - 1; //apanyo
 			while (!textfile.eof()){
 				textfile >> buffer[i];
-				//cout << buffer[i] << endl;
 				i++;
 			}
 			textfile.close();
-		   
-			//int bufferheight = sizeof(buffer);
-			int bufferheight = sizeof buffer[0];
-			int bufferlength = buffer[0].size();         //AquestTroçDeCodiNoEsMeu    
-			cout << bufferheight;
-			char Filename[255][255];                     //
-			for (int y = 0; y <= bufferheight; y++)      //EhtoEhMio
+			char map[255][255];                     //
+			for (int y = 1; y <= bufferheight; y++)      //EhtoEhMio el y=1 hauria d esser 0
 			{
-				for (int x = 0; x <= bufferlength; x++)  //
+				for (int x = 1; x <= bufferlength; x++)  //
 				{                                        //
-					Filename[x][y] = buffer[y][x];       //APartirDAquiElCodiJaEsMeu
+					map[x][y] = buffer[y][x];       //APartirDAquiElCodiJaEsMeu
 				}
 			}
+			cout << map[0][0];
 		}
 		if (option == 2){
-			int i;
+			int i, j;
 			cout << "Introdueix el numero de files: ";
 			cin >> i;
+			cout << "Introdueix el numero de columnes: ";
+			cin >> j;
 			ofstream textfile;
 			textfile.open("map.txt");
+			textfile << i<<endl<<j<<endl;
+			
 			if (textfile.fail()){
 				cerr << "error al obrir";
 			}
