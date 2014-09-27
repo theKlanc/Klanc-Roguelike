@@ -1,8 +1,8 @@
-﻿﻿#include <iostream>
-#include <fstream>
+﻿#include <fstream>
 #include <string>
 #include <conio.h>
 #include <windows.h>
+#include <iostream>
 
 using namespace std;
 
@@ -18,7 +18,7 @@ int main()
 	while (1)
 	{
 		int option;
-		cout << "Escull una opcio" << endl << "1) Programa1" << endl << "2) Crear mapa" << endl << "3) Opcions" << endl << "4) Exit" << endl;
+		cout << "Escull una opcio" << endl << "1) Començar" << endl << "2) Crear mapa" << endl << "3) TESTAREA" << endl << "4) Exit" << endl;
 		cin >> option;
 		if (option == 1){
 			/*d aqui fins al proxim comment es la carrega de mapa*/
@@ -63,34 +63,25 @@ int main()
 			int posx = 1, posy = 1;
 			char screenbuffer[255][255];
 			while (1){
-				/*int tecla = _getch();
-				switch (tecla){
-				case 22475 : {
-				posx = posx - 1;
-				}
-				case 22472 : {
-				posy = posy - 1;
-				}
-				case 22480 : {
-				posy = posy + 1;
-				}
-				case 22477 : {
-				posx = posx + 1;
-				}
-				default:{}
-				}*/
 				if (GetAsyncKeyState(VK_LEFT)){
-					posx = posx - 1;
-					cout << "trolasso";
+					if (map[posx - 1][posy] == '0'){
+						posx = posx - 1;
+					}
 				}
 				if (GetAsyncKeyState(VK_UP)){
-					posy = posy - 1;
+					if (map[posx][posy-1] == '0'){
+						posy = posy - 1;
+					}
 				}
 				if (GetAsyncKeyState(VK_DOWN)){
-					posy = posy + 1;
+					if (map[posx][posy+1] == '0'){
+						posy = posy + 1;
+					}
 				}
 				if (GetAsyncKeyState(VK_RIGHT)){
-					posx = posx + 1;
+					if (map[posx + 1][posy] == '0'){
+						posx = posx + 1;
+					}
 				}
 
 
@@ -102,15 +93,15 @@ int main()
 					}
 				}
 				cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-				screenbuffer[posx][posy] = 'O';
+				screenbuffer[posx][posy] = 'X';
 				for (int i = 0; i <= mapheight; i++){
 					for (int j = 0; j <= maplength; j++){
 						cout << screenbuffer[j][i];
 					}
 					cout << endl;
 				}
-				//cout << "X=" << posx << " Y=" << posy << endl << n;
-				//n++;
+				cout << "X=" << posx << " Y=" << posy << endl << n;
+				n++;
 				Sleep(160);
 			}
 
@@ -145,20 +136,7 @@ int main()
 
 		}
 		if (option == 3){
-			while (1){
-				if (GetAsyncKeyState(VK_LEFT)){
-					cout << "trolasso";
-				}
-				if (GetAsyncKeyState(VK_UP)){
-					cout << "trolasso";
-				}
-				if (GetAsyncKeyState(VK_DOWN)){
-					cout << "trolasso";
-				}
-				if (GetAsyncKeyState(VK_RIGHT)){
-					cout << "trolasso";
-				}
-			}
+			//TESTAREA
 		}
 		if (option == 4){
 			return 0;
