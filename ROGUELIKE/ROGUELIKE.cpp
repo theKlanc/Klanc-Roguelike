@@ -22,7 +22,7 @@ void clearscreen()//codirobat per evitar flickers
 int main()
 {
 	int n = 0;
-	cout << "Launcher by..." << endl;
+	cout << "Launcher by.." << endl;
 	cout << "      _             _    ____   ___  _ " << endl;
 	cout << "  ___| | __ _ _ __ | | _|___ \\ / _ \\/ |" << endl;
 	cout << " / __| |/ _` | '_ \\| |/ / __) | | | | |" << endl;
