@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿﻿#include <iostream>
 #include <fstream>
 #include <string>
 #include <conio.h>
@@ -22,7 +22,7 @@ int main()
 		cin >> option;
 		if (option == 1){
 			/*d aqui fins al proxim comment es la carrega de mapa*/
-			int i = 0, mapheight,maplength;
+			int i = 0, mapheight, maplength;
 			string temp1[255];
 			ifstream textfile;
 			textfile.open("map.txt");
@@ -48,17 +48,17 @@ int main()
 				}
 			}
 			/*for (int i = 0; i <= mapheight; i++){
-				for (int j = 0; j <= maplength; j++){
-					cout << map[j][i];
-				}
-				cout << endl;
+			for (int j = 0; j <= maplength; j++){
+			cout << map[j][i];
+			}
+			cout << endl;
 			}*/
-			
-			
-			
-			
+
+
+
+
 			/*a partir d aqui comensa el joc...*/
-			
+
 
 			int posx = 1, posy = 1;
 			char screenbuffer[255][255];
@@ -66,18 +66,18 @@ int main()
 				/*int tecla = _getch();
 				switch (tecla){
 				case 22475 : {
-						posx = posx - 1;
-					}
-					case 22472 : {
-						posy = posy - 1;
-					}
-					case 22480 : {
-						posy = posy + 1;
-					}
-					case 22477 : {
-						posx = posx + 1;
-					}
-					default:{}
+				posx = posx - 1;
+				}
+				case 22472 : {
+				posy = posy - 1;
+				}
+				case 22480 : {
+				posy = posy + 1;
+				}
+				case 22477 : {
+				posx = posx + 1;
+				}
+				default:{}
 				}*/
 				if (GetAsyncKeyState(VK_LEFT)){
 					posx = posx - 1;
@@ -98,10 +98,10 @@ int main()
 
 				for (int i = 0; i <= mapheight; i++){
 					for (int j = 0; j <= maplength; j++){
-						screenbuffer[j][i]= map[j][i];
+						screenbuffer[j][i] = map[j][i];
 					}
 				}
-				cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl; 
+				cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 				screenbuffer[posx][posy] = 'O';
 				for (int i = 0; i <= mapheight; i++){
 					for (int j = 0; j <= maplength; j++){
@@ -128,12 +128,12 @@ int main()
 			cin >> j;
 			ofstream textfile;
 			textfile.open("map.txt");
-			textfile << i<<endl<<j<<endl;
-			
+			textfile << i << endl << j << endl;
+
 			if (textfile.fail()){
 				cerr << "error al obrir";
 			}
-			
+
 			while (i != 0){
 				string temp;
 				cin >> temp;
