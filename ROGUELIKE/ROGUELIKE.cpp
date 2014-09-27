@@ -2,11 +2,13 @@
 #include <fstream>
 #include <string>
 #include <conio.h>
+#include <windows.h>
 
 using namespace std;
 
 int main()
 {
+	int n = 0;
 	cout << "Launcher by..." << endl;
 	cout << "      _             _    ____   ___  _ " << endl;
 	cout << "  ___| | __ _ _ __ | | _|___ \\ / _ \\/ |" << endl;
@@ -61,8 +63,7 @@ int main()
 			int posx = 1, posy = 1;
 			char screenbuffer[255][255];
 			while (1){
-				//int tecla = _getch();
-				int tecla = 22480;
+				/*int tecla = _getch();
 				switch (tecla){
 				case 22475 : {
 						posx = posx - 1;
@@ -77,7 +78,24 @@ int main()
 						posx = posx + 1;
 					}
 					default:{}
+				}*/
+				if (GetAsyncKeyState(VK_LEFT)){
+					posx = posx - 1;
+					cout << "trolasso";
 				}
+				if (GetAsyncKeyState(VK_UP)){
+					posy = posy - 1;
+				}
+				if (GetAsyncKeyState(VK_DOWN)){
+					posy = posy + 1;
+				}
+				if (GetAsyncKeyState(VK_RIGHT)){
+					posx = posx + 1;
+				}
+
+
+
+
 				for (int i = 0; i <= mapheight; i++){
 					for (int j = 0; j <= maplength; j++){
 						screenbuffer[j][i]= map[j][i];
@@ -91,6 +109,9 @@ int main()
 					}
 					cout << endl;
 				}
+				//cout << "X=" << posx << " Y=" << posy << endl << n;
+				//n++;
+				Sleep(160);
 			}
 
 
@@ -124,9 +145,19 @@ int main()
 
 		}
 		if (option == 3){
-			//generatemapOPCIONS;HIJACKED TEST
 			while (1){
-				cout << _getch();
+				if (GetAsyncKeyState(VK_LEFT)){
+					cout << "trolasso";
+				}
+				if (GetAsyncKeyState(VK_UP)){
+					cout << "trolasso";
+				}
+				if (GetAsyncKeyState(VK_DOWN)){
+					cout << "trolasso";
+				}
+				if (GetAsyncKeyState(VK_RIGHT)){
+					cout << "trolasso";
+				}
 			}
 		}
 		if (option == 4){
