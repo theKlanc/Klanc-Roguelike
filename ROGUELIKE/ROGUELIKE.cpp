@@ -3,8 +3,21 @@
 #include <conio.h>
 #include <windows.h>
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
+
+void clearscreen()//codirobat per evitar flickers
+{
+	HANDLE hOut;
+	COORD Position;
+
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	Position.X = 0;
+	Position.Y = 0;
+	SetConsoleCursorPosition(hOut, Position);
+}
 
 int main()
 {
@@ -63,6 +76,14 @@ int main()
 			int posx = 1, posy = 1;
 			char screenbuffer[255][255];
 			while (1){
+				clearscreen();
+				screenbuffer[posx][posy] = 'X';
+				for (int i = 0; i <= mapheight; i++){
+					for (int j = 0; j <= maplength; j++){
+						cout << screenbuffer[j][i];
+					}
+					cout << endl;
+				}
 				if (GetAsyncKeyState(VK_LEFT)){
 					if (map[posx - 1][posy] == '0'){
 						posx = posx - 1;
@@ -92,17 +113,9 @@ int main()
 						screenbuffer[j][i] = map[j][i];
 					}
 				}
-				cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-				screenbuffer[posx][posy] = 'X';
-				for (int i = 0; i <= mapheight; i++){
-					for (int j = 0; j <= maplength; j++){
-						cout << screenbuffer[j][i];
-					}
-					cout << endl;
-				}
 				cout << "X=" << posx << " Y=" << posy << endl << n;
 				n++;
-				Sleep(160);
+				Sleep(100);
 			}
 
 
