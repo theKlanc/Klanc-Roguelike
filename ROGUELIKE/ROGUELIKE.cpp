@@ -113,6 +113,9 @@ int main()
 						posx = posx + 1;
 					}
 				}
+				if (GetAsyncKeyState('Q')){
+					return 0;
+				}
 				if (GetAsyncKeyState('A')){
 					switch (map[posx - 1][posy]){
 					case ' ':
