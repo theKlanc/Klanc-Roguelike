@@ -67,7 +67,7 @@ int main()
 			cout << endl;
 			}*/
 
-
+			
 
 
 			/*a partir d aqui comensa el joc...*/
@@ -76,6 +76,13 @@ int main()
 			int posx = 1, posy = 1;
 			char screenbuffer[255][255];
 			while (1){
+				for (int i = 0; i <= mapheight+1; i++){
+					for (int j = 0; j <= maplength+1; j++){
+						if (map[j][i] == 'X'){
+							map[j][i] = ' ';
+						}
+					}
+				}
 				clearscreen();
 				screenbuffer[posx][posy] = 'X';
 				for (int i = 0; i <= mapheight; i++){
@@ -84,30 +91,75 @@ int main()
 					}
 					cout << endl;
 				}
+				
+				//ComençaLaDeteccioDeTecles
 				if (GetAsyncKeyState(VK_LEFT)){
-					if (map[posx - 1][posy] == '0'){
+					if (map[posx - 1][posy] == ' '){
 						posx = posx - 1;
 					}
 				}
 				if (GetAsyncKeyState(VK_UP)){
-					if (map[posx][posy-1] == '0'){
+					if (map[posx][posy - 1] == ' '){
 						posy = posy - 1;
 					}
 				}
 				if (GetAsyncKeyState(VK_DOWN)){
-					if (map[posx][posy+1] == '0'){
+					if (map[posx][posy + 1] == ' '){
 						posy = posy + 1;
 					}
 				}
 				if (GetAsyncKeyState(VK_RIGHT)){
-					if (map[posx + 1][posy] == '0'){
+					if (map[posx + 1][posy] == ' '){
 						posx = posx + 1;
 					}
 				}
+				if (GetAsyncKeyState('A')){
+					switch (map[posx - 1][posy]){
+					case ' ':
+						map[posx - 1][posy] = '1';
+						break;
 
+					case '1':
+						map[posx - 1][posy] = ' ';
+						break;
+					}
+				}
+				if (GetAsyncKeyState('W')){
+					switch (map[posx][posy-1]){
+					case ' ':
+						map[posx][posy-1] = '1';
+						break;
 
+					case '1':
+						map[posx][posy-1] = ' ';
+						break;
+					}
+				}
+				if (GetAsyncKeyState('S')){
+					switch (map[posx][posy+1]){
+					case ' ':
+						map[posx][posy+1] = '1';
+						break;
 
+					case '1':
+						map[posx][posy+1] = ' ';
+						break;
+					}
+				}
+				if (GetAsyncKeyState('D')){
+					switch (map[posx + 1][posy]){
+					case ' ':
+						map[posx + 1][posy] = '1';
+						break;
 
+					case '1':
+						map[posx + 1][posy] = ' ';
+						break;
+					}
+				}
+				//AcabaLaDeteccioDeLletres
+
+				//PreparaElProximFrame
 				for (int i = 0; i <= mapheight; i++){
 					for (int j = 0; j <= maplength; j++){
 						screenbuffer[j][i] = map[j][i];
@@ -115,9 +167,32 @@ int main()
 				}
 				cout << "X=" << posx << " Y=" << posy << endl << n;
 				n++;
-				Sleep(100);
-			}
+				Sleep(50);
+				
+				//GuardaMapa
+				
+				for (int i = 0; i <= mapheight+1; i++){
+					for (int j = 0; j <= maplength+1; j++){
+						if (map[j][i] == ' '){
+							map[j][i] = 'X';
+						}
+					}
+				}
 
+				ofstream textfilesave;
+				textfilesave.open("map.txt");
+				textfilesave << mapheight+1 << endl << maplength+1 << endl;
+				for (int i = 0; i <= mapheight; i++){
+					for (int j = 0; j <= maplength; j++){
+						textfilesave << map[j][i];
+					}
+					textfilesave << endl;
+				}
+			}
+			
+
+
+			
 
 
 
@@ -132,11 +207,10 @@ int main()
 			cin >> j;
 			ofstream textfile;
 			textfile.open("map.txt");
-			textfile << i << endl << j << endl;
-
 			if (textfile.fail()){
 				cerr << "error al obrir";
 			}
+			textfile << i << endl << j << endl;
 
 			while (i != 0){
 				string temp;
