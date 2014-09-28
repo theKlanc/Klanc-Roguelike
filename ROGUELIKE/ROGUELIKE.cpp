@@ -34,7 +34,7 @@ int main()
 		cout << "Escull una opcio" << endl << "1) Començar" << endl << "2) Crear mapa" << endl << "3) TESTAREA" << endl << "4) Exit" << endl;
 		cin >> option;
 		if (option == 1){
-			/*d aqui fins al proxim comment es la carrega de mapa*/
+			/*Des d'aqui fins al proxim comment multilinia hi ha la càrrega de mapa*/
 			int i = 0, mapheight, maplength;
 			string temp1[255];
 			ifstream textfile;
@@ -45,32 +45,24 @@ int main()
 			textfile >> mapheight;
 			textfile >> maplength;
 			cout << mapheight << endl << maplength << endl;
-			mapheight = mapheight - 1; //NOapanyo
-			maplength = maplength - 1; //otro apanyo, tot i k potser al final no son apanyosEDIT:nohoson
+			mapheight = mapheight - 1; //EsNecessitaDegutAQueAVegadesComençemAComptarDesDe0IAVegadesDesDe1
+			maplength = maplength - 1;
 			while (!textfile.eof()){
 				textfile >> temp1[i];
 				i++;
 			}
 			textfile.close();
-			char map[255][255];                          //
-			for (int y = 0; y <= mapheight; y++)      //EhtoEhMio el y=1 hauria d esser 0
+			char map[255][255];                          
+			for (int y = 0; y <= mapheight; y++)      
 			{
-				for (int x = 0; x <= maplength; x++)  //
-				{                                        //
-					map[x][y] = temp1[y][x];            //APartirDAquiElCodiJaEsMeu
+				for (int x = 0; x <= maplength; x++)  
+				{                                        
+					map[x][y] = temp1[y][x];            
 				}
-			}
-			/*for (int i = 0; i <= mapheight; i++){
-			for (int j = 0; j <= maplength; j++){
-			cout << map[j][i];
-			}
-			cout << endl;
-			}*/
-
-			
+			}		
 
 
-			/*a partir d aqui comensa el joc...*/
+			/*A partir d aqui comença el joc...*/
 
 
 			int posx = 1, posy = 1;
@@ -93,6 +85,7 @@ int main()
 				}
 				
 				//ComençaLaDeteccioDeTecles
+
 				if (GetAsyncKeyState(VK_LEFT)){
 					if (map[posx - 1][posy] == ' '){
 						posx = posx - 1;
@@ -160,6 +153,7 @@ int main()
 						break;
 					}
 				}
+				
 				//AcabaLaDeteccioDeLletres
 
 				//PreparaElProximFrame
@@ -170,6 +164,7 @@ int main()
 				}
 				cout << "X=" << posx << " Y=" << posy << endl << n;
 				n++;
+				
 				Sleep(50);
 				
 				//GuardaMapa
@@ -192,15 +187,6 @@ int main()
 					textfilesave << endl;
 				}
 			}
-			
-
-
-			
-
-
-
-
-
 		}
 		if (option == 2){
 			int i, j;
